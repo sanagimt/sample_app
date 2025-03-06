@@ -29,6 +29,17 @@ class ListsController < ApplicationController
   end
 
   def edit
+    #説明はshow参照
+    @list = List.find(params[:id])
+  end
+
+  def update
+    #引数を受け取り、レコード取得
+    list = List.find(params[:id])
+    #データを更新するためのupdateメソッド
+    list.update(list_params)
+    #一覧へのリダイレクト
+    redirect_to list_path(list.id)
   end
 
   private

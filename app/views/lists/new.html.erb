@@ -3,7 +3,8 @@
 <!-- %= %：HTMLに変換する、動的なコンテンツとして表示（変化）-->
 <!-- % %：HTMLに変換しない、静的なコンテンツとして表示（不変） -->
  
-<%= form_with model: @list do |f| %>
+<%= form_with model: @list, url: '/lists', method: post do |f| %>
+ <!-- url:どのURLへ送信するか method:HTTPメソッドを指定 -->
     <h4>タイトル</h4>
     <%= f.text_field :title %>
 

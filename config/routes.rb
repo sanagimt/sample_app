@@ -9,7 +9,8 @@ Rails.application.routes.draw do
     #投稿データを呼び出すルーティングを追加
     #:idでURLを指定。アクション内にparams[:id]と記述して投稿データを取得する。
     #as:～として利用できる
-  get 'lists/edit'
-  get '/top' => 'homes#top'
+  get 'lists/:id/edit' => 'lists#edit', as: 'edit_list'
+  patch 'lists/:id' => 'lists#update' , as: 'update_list'
+    #patch：既存データを一部更新するHTTPメソッド
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
