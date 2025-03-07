@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
   def new
+    #新規作成のフォームを表示するためのインスタンス
     @list = List.new
     #インスタンス変数：コントローラー⇒Viewでデータの受け渡しができる、@マークをつけて定義
     #ローカル変数 ：受け渡しできない、何もつけない
@@ -8,12 +9,16 @@ class ListsController < ApplicationController
 
   def create
     #データを受け取り新規保存するためのインスタンス作成
-    list = List.new(list_params) 
-    #今回はローカル変数（Viewに不要）
+    @list = List.new(list_params) 
     #データをデータベースに保存するためのsaveメソッド実行
-    list.save
-    #保存したデータの詳細画面へのリダイレクト
-    redirect_to list_path(list.id)
+    if @list.save
+    #保存できる場合、保存したデータの詳細画面へのリダイレクト
+      redirect_to list_path(@list.id)
+    else
+    #保存できなければ、新規投稿ページを再表示
+    #render:同じコントローラ内の別アクションのViewを表示
+      render :new
+    end
   end
 
   def index

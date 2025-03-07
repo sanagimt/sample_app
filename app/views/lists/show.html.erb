@@ -5,11 +5,8 @@
 <p><%= @list.body %></p>
 
 <h2>画像</h2>
-<% if @list.image.attached? %>
-    <%= image_tag @list.image, size: "300x300" %>
-<% else %>
-    <%= image_tag 'no_image', size: "300x300" %>
-<% end %>
+<!-- validation追加にてif削除。画像が存在しない場合の処理が不要のため、以下追加 -->
+<%= image_tag @list.image, size: "300x300" %>
 
 <p></p>
 <%= link_to "編集", edit_list_path(@list.id) %>

@@ -13,10 +13,6 @@
 
     <p>画像</p>
     <!-- imageが添付されていればimage、なければno_image.jpgが表示される。-->
-    <% if list.image.attached? %>
-        <%= image_tag list.image, size: "200x200" %>
-    <% else %>
-        <%= image_tag 'no_image', size: "200x200" %>
-    <% end %>
-
+    <!-- ⇒validation追加にて削除、画像が存在しない場合の処理が不要のため、以下追加 -->
+    <%= image_tag list.image, size: "200x200" %>
 <% end %>
