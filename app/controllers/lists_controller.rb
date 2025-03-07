@@ -48,7 +48,7 @@ class ListsController < ApplicationController
   # ストロングパラメータ：マスアサインメント脆弱性を防ぐ仕組み
   # ※マスアサインメント脆弱性：悪意のあるユーザーが改竄したデータを保存してしまうシステムの弱さ。
   def list_params
-    params.require(:list).permit(:title, :body)
+    params.require(:list).permit(:title, :body, :image)
     # params:formからのデータが入るところ
     # require:送られたデータ中からモデル名を指定し（:list）、データを絞り込む
     # permit：絞り込んだデータから、保存を許可するカラムを指定

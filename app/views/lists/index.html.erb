@@ -11,4 +11,12 @@
             <!-- path:特定のURLのパスを指すルーティング -->
     </span>
 
+    <p>画像</p>
+    <!-- imageが添付されていればimage、なければno_image.jpgが表示される。-->
+    <% if list.image.attached? %>
+        <%= image_tag list.image, size: "200x200" %>
+    <% else %>
+        <%= image_tag 'no_image', size: "200x200" %>
+    <% end %>
+
 <% end %>
