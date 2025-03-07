@@ -42,6 +42,15 @@ class ListsController < ApplicationController
     redirect_to list_path(list.id)
   end
 
+  def destroy
+    #データを1件取得
+    list = List.find(params[:id])
+    #取得したデータを削除
+    list.destroy
+    #投稿一覧へリダイレクト
+    redirect_to '/lists'
+  end
+
   private
   #ここから下はcontrollerの中でしか呼び出せない（境界線）。データベースにアクセスするアクション、viewに表示するアクション等を下に書くとエラーが出る。
   
