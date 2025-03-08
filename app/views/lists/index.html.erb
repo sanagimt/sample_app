@@ -1,18 +1,42 @@
-<h1>投稿一覧</h1>
-
+<div class="list-wrap">
 <% @lists.each do |list| %>
+    <div class="list-box">
+        <% if list.image.attached? %>
+            <%= image_tag list.image, size: "200x200" %>
+        <% else %>
+            <%= image_tag 'no-image', size: "200x200" %>
+        <% end %>
+        <div class="list-comment">
+            <span class="list-body"><%= list.body %></span>
+            <span class="list-title"><%= link_to list.title, list_path(list.id) %></span>
+        </div>
+    </div>
+<% end %>
+</div>
+    
+
+
+
+
+
+
+
+<!-- ～9章のコード -->
+<!-- <h1>投稿一覧</h1> -->
+
+<!--<% @lists.each do |list| %>-->
 <!-- レコードの数だけ繰り返し処理を行う -->
 <!-- HTMLとして表示しないようにするため=はつけない -->
 
-    <p>タイトル</p>
-    <span>
+   <!-- <p>タイトル</p> -->
+   <!-- <span>-->
         <!-- リンク設定 link_to 表示テキスト, リンク先URL[オプション] -->
-        <%= link_to list.title, list_path(list.id) %>
+        <!--<%= link_to list.title, list_path(list.id) %>-->
             <!-- path:特定のURLのパスを指すルーティング -->
-    </span>
+   <!--</span>-->
 
-    <p>画像</p>
+   <!--<p>画像</p>-->
     <!-- imageが添付されていればimage、なければno_image.jpgが表示される。-->
     <!-- ⇒validation追加にて削除、画像が存在しない場合の処理が不要のため、以下追加 -->
-    <%= image_tag list.image, size: "200x200" %>
-<% end %>
+    <!--<%= image_tag list.image, size: "200x200" %>-->
+<!--<% end %>-->
